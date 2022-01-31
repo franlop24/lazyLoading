@@ -1,3 +1,4 @@
+import { counters, countC, countI } from './index';
 
 const isIntersecting = (entry) => {
     return entry.isIntersecting // True si estña dentro de la pantalla
@@ -9,7 +10,8 @@ const loadImage = (entry) => {
     const url = image.dataset.src;
 
     image.src = url;    
-
+    countI.push('b');
+    counters(countC.length, countI.length)
     observer.unobserve(container);
 }
 const observer = new IntersectionObserver((entries) => {
