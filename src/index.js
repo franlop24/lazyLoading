@@ -1,3 +1,4 @@
+import h from 'hyperscript';
 import { registerImage } from './lazy';
 
 //Obtenes referencias a objetos existentes
@@ -9,16 +10,21 @@ export let countI = [];
 
 //Crear Imagenes
 function createImageNode (){
-    const containerImage = document.createElement('div');
-    containerImage.className = "p-4";
-    const image = document.createElement('img');
+    
     //image.src = "https://source.unsplash.com/random";
+    //const image = document.createElement('img');
     const numRand = Math.ceil(Math.random()*122);
-    //image.src = "https://source.unsplash.com/random";
-    image.dataset.src = `https://randomfox.ca/images/${numRand}.jpg`;
-    image.alt = "Imagen aleatoria";
-    image.className = "mx-auto s-320";
-    containerImage.appendChild(image);
+    //image.dataset.src = `https://randomfox.ca/images/${numRand}.jpg`;
+    //image.alt = "Imagen aleatoria";
+    //image.className = "mx-auto s-320";
+    const image = h('img.mx-auto.s-320', {
+        "data-src": `https://randomfox.ca/images/${numRand}.jpg`,
+        alt : "Imagen aleatoria"
+    });
+    //const containerImage = document.createElement('div');
+    //containerImage.className = "p-4";
+    const containerImage = h("div.p-4", image);
+    //containerImage.appendChild(image);
 
     appImages.appendChild(containerImage);
     registerImage(containerImage);
